@@ -16,7 +16,7 @@ public class NameHelper : MonoBehaviour
     int defaultTextSize;
     Color defaultTextColor;
 
-    void Start(){
+    void Awake(){
         defaultTextSize = mContent.fontSize;
         defaultTextColor = mContent.color;
     }
