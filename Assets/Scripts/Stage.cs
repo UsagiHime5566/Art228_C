@@ -52,19 +52,19 @@ public class Stage : MonoBehaviour
         }
 
         if(content.pages[currentIndex].content == null)
-            StageManager.instance.BTNView.gameObject.SetActive(false);
+            StageManager.instance.BTNView.TurnBTN(false);
         else
-            StageManager.instance.BTNView.gameObject.SetActive(true);
+            StageManager.instance.BTNView.TurnBTN(true);
 
         if(currentIndex + 1 >= content.pages.Count)
-            StageManager.instance.BTNRight.gameObject.SetActive(false);
+            StageManager.instance.BTNRight.TurnBTN(false);
         else
-            StageManager.instance.BTNRight.gameObject.SetActive(true);
+            StageManager.instance.BTNRight.TurnBTN(true);
 
         if(currentIndex - 1 < 0)
-            StageManager.instance.BTNLeft.gameObject.SetActive(false);
+            StageManager.instance.BTNLeft.TurnBTN(false);
         else
-            StageManager.instance.BTNLeft.gameObject.SetActive(true);
+            StageManager.instance.BTNLeft.TurnBTN(true);
     }
 
     public void GoNextPage(Button btn){

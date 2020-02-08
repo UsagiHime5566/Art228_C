@@ -74,12 +74,14 @@ public class StageManager : MonoBehaviour
         if(HomePage.gameObject.activeSelf)
             HomePage.gameObject.SetActive(false);
 
+        BTNView.transform.localScale = Vector3.one;
         BTNView.transform.DOPunchScale(new Vector3(punchAmt, punchAmt, punchAmt), punchTime);
     }
     void ButtonHome(){
         GoHomePage();
         statIndex++;
 
+        BTNHome.transform.localScale = Vector3.one;
         BTNHome.transform.DOPunchScale(new Vector3(punchAmt, punchAmt, punchAmt), punchTime);
     }
     void ButtonLeft(){
@@ -91,6 +93,7 @@ public class StageManager : MonoBehaviour
             ShowCurrentMap();
         }
 
+        BTNLeft.transform.localScale = Vector3.one;
         BTNLeft.transform.DOPunchScale(new Vector3(punchAmt, punchAmt, punchAmt), punchTime);
     }
     void ButtonRight(){
@@ -102,6 +105,7 @@ public class StageManager : MonoBehaviour
             ShowCurrentMap();
         }
 
+        BTNRight.transform.localScale = Vector3.one;
         BTNRight.transform.DOPunchScale(new Vector3(punchAmt, punchAmt, punchAmt), punchTime);
     }
 
@@ -109,17 +113,17 @@ public class StageManager : MonoBehaviour
 
     void GoHomePage(){
         MapPage.gameObject.SetActive(true);
-        BTNView.gameObject.SetActive(true);
-        BTNRight.gameObject.SetActive(true);
-        BTNLeft.gameObject.SetActive(true);
+        BTNView.TurnBTN(true);
+        BTNRight.TurnBTN(true);
+        BTNLeft.TurnBTN(true);
     }
     void GoIntroPage(){
         stagePage.DestroyEffect();
         MapPage.gameObject.SetActive(true);
         HomePage.gameObject.SetActive(true);
-        BTNView.gameObject.SetActive(true);
-        BTNRight.gameObject.SetActive(true);
-        BTNLeft.gameObject.SetActive(true);
+        BTNView.TurnBTN(true);
+        BTNRight.TurnBTN(true);
+        BTNLeft.TurnBTN(true);
     }
 
     /////////////////
@@ -136,5 +140,23 @@ public class StageManager : MonoBehaviour
         stagePage.LoadStage(area[MapId].stageContent);
         
         MapPage.gameObject.SetActive(false);
+    }
+}
+
+
+public static class ExtendArt228
+{
+    public static void TurnBTN(this Button button, bool visible){
+        CanvasGroup cg =  button.GetComponent<CanvasGroup>();
+        if(cg == null)
+            return;
+
+        if(visible){
+            cg.alpha = 1;
+            cg.blocksRaycasts = true;
+        } else {
+            cg.alpha = 0;
+            cg.blocksRaycasts = false;
+        }
     }
 }
