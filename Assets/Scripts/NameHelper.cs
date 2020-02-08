@@ -12,15 +12,25 @@ public class NameHelper : MonoBehaviour
 
     public string val_number;
     public string val_content;
-    void Start()
-    {
-        
+
+    int defaultTextSize;
+    Color defaultTextColor;
+
+    void Start(){
+        defaultTextSize = mContent.fontSize;
+        defaultTextColor = mContent.color;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    public void CancelFocus(){
+        mContent.fontSize = defaultTextSize;
+        mContent.color = defaultTextColor;
+        linkMap.gameObject.SetActive(false);
+    }
+
+    public void SetFocus(int size, Color color){
+        mContent.fontSize = size;
+        mContent.color = color;
+        linkMap.gameObject.SetActive(true);
     }
 
     private void OnValidate() {

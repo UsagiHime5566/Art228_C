@@ -13,13 +13,28 @@ MonoBehaviour:
   m_Name: c
   m_EditorClassIdentifier: 
   pages:
-  - preview: {fileID: 21300000, guid: 0bb2e1b09c789884c94b9202837d8f20, type: 3}
+  - preview: {fileID: 21300000, guid: ef4a1eeebd7dbf440b22005a364f2005, type: 3}
+    content: {fileID: 21300000, guid: 67bc5d926a2de864fb1b03364e165d10, type: 3}
+    effect: {fileID: 0}
+    infoRect: {fileID: 0}
+    infos: []
+  - preview: {fileID: 21300000, guid: 293039a1af0748943b45bbc6ef36691b, type: 3}
     content: {fileID: 0}
-  - preview: {fileID: 21300000, guid: fd24a12bd7ab37343a7a0af9256e3caa, type: 3}
-    content: {fileID: 21300000, guid: 2537d6402f67ac44b98e6ac1ed5006b0, type: 3}
-  - preview: {fileID: 21300000, guid: 5166aabbbcdc0a04094aabbfd1d039d8, type: 3}
-    content: {fileID: 21300000, guid: 4aff5d9e1930a804aa5d91a96a6fcfa4, type: 3}
-  - preview: {fileID: 21300000, guid: 4f3dbc9ea6ab0dc4d84afd50e2042a39, type: 3}
-    content: {fileID: 21300000, guid: 1125b1c4e3d4edb43bca1e33f450c28a, type: 3}
-  backgrounds: []
-  dataInfo: []
+    effect: {fileID: 0}
+    infoRect: {fileID: 0}
+    infos: []
+  - preview: {fileID: 21300000, guid: 7e78f08dff7856749bbf1050f3b7f459, type: 3}
+    content: {fileID: 0}
+    effect: {fileID: 0}
+    infoRect: {fileID: 0}
+    infos: []
+  - preview: {fileID: 21300000, guid: 78db17d2e1fb9a644a22b5807083601a, type: 3}
+    content: {fileID: 0}
+    effect: {fileID: 0}
+    infoRect: {fileID: 0}
+    infos: []
+  - preview: {fileID: 21300000, guid: 4cf0a18522edbff4cb13ddecf8799f90, type: 3}
+    content: {fileID: 0}
+    effect: {fileID: 0}
+    infoRect: {fileID: 0}
+    infos: []

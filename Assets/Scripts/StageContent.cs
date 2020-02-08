@@ -6,8 +6,15 @@ using UnityEngine;
 public class StageContent : ScriptableObject
 {
     public List<ArtPage> pages;
-    public List<Sprite> backgrounds;
-    public List<Sprite> dataInfo;
+
+    [ContextMenu("Reset datas")]
+    void ResetParams(){
+        for (int i = 0; i < pages.Count; i++)
+        {
+            pages[i] = null;
+        }
+        pages = null;
+    }
 }
 
 
@@ -16,4 +23,7 @@ public class ArtPage
 {
     public Sprite preview;
     public Sprite content;
+    public GameObject effect;
+    public GameObject infoRect;
+    public List<Sprite> infos;
 }
