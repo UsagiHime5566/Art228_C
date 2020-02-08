@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: j
   m_EditorClassIdentifier: 
   pages:
-  - preview: {fileID: 21300000, guid: 79a2e218a70351648837ed3a9e8361fe, type: 3}
-    content: {fileID: 21300000, guid: 54381d4474a4da240bccf5fad0687200, type: 3}
+  - preview: {fileID: 21300000, guid: 54381d4474a4da240bccf5fad0687200, type: 3}
+    content: {fileID: 21300000, guid: 79a2e218a70351648837ed3a9e8361fe, type: 3}
     effect: {fileID: 0}
     infoRect: {fileID: 0}
     infos: []

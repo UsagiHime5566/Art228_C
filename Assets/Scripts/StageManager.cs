@@ -17,10 +17,10 @@ public class StageManager : MonoBehaviour
     public Button BTNRight;
 
 
-    public Action OnHome;
-    public Action OnLeft;
-    public Action OnRight;
-    public Action OnView;
+    public Action<Button> OnHome;
+    public Action<Button> OnLeft;
+    public Action<Button> OnRight;
+    public Action<Button> OnView;
 
     public float punchAmt = 10;
     public float punchTime = 0.3f;
@@ -51,6 +51,7 @@ public class StageManager : MonoBehaviour
         statIndex = 0;
         MapId = 0;
         ShowCurrentMap();
+        StartCoroutine(IdleToIntro());
     }
 
     IEnumerator IdleToIntro(){
@@ -63,7 +64,7 @@ public class StageManager : MonoBehaviour
     }
     
     void ButtonView(){
-        OnView?.Invoke();
+        if(!MapPage.gameObject.activeSelf && !HomePage.gameObject.activeSelf) OnView?.Invoke(BTNView);
         statIndex++;
 
         if(!HomePage.gameObject.activeSelf && MapPage.gameObject.activeSelf){
@@ -82,7 +83,7 @@ public class StageManager : MonoBehaviour
         BTNHome.transform.DOPunchScale(new Vector3(punchAmt, punchAmt, punchAmt), punchTime);
     }
     void ButtonLeft(){
-        if(!MapPage.gameObject.activeSelf) OnLeft?.Invoke();
+        if(!MapPage.gameObject.activeSelf) OnLeft?.Invoke(BTNLeft);
         statIndex++;
 
         if(MapPage.gameObject.activeSelf){
@@ -93,7 +94,7 @@ public class StageManager : MonoBehaviour
         BTNLeft.transform.DOPunchScale(new Vector3(punchAmt, punchAmt, punchAmt), punchTime);
     }
     void ButtonRight(){
-        if(!MapPage.gameObject.activeSelf) OnRight?.Invoke();
+        if(!MapPage.gameObject.activeSelf) OnRight?.Invoke(BTNRight);
         statIndex++;
         
         if(MapPage.gameObject.activeSelf){
@@ -109,10 +110,16 @@ public class StageManager : MonoBehaviour
     void GoHomePage(){
         MapPage.gameObject.SetActive(true);
         BTNView.gameObject.SetActive(true);
+        BTNRight.gameObject.SetActive(true);
+        BTNLeft.gameObject.SetActive(true);
     }
     void GoIntroPage(){
+        stagePage.DestroyEffect();
         MapPage.gameObject.SetActive(true);
         HomePage.gameObject.SetActive(true);
+        BTNView.gameObject.SetActive(true);
+        BTNRight.gameObject.SetActive(true);
+        BTNLeft.gameObject.SetActive(true);
     }
 
     /////////////////

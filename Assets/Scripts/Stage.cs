@@ -55,9 +55,19 @@ public class Stage : MonoBehaviour
             StageManager.instance.BTNView.gameObject.SetActive(false);
         else
             StageManager.instance.BTNView.gameObject.SetActive(true);
+
+        if(currentIndex + 1 >= content.pages.Count)
+            StageManager.instance.BTNRight.gameObject.SetActive(false);
+        else
+            StageManager.instance.BTNRight.gameObject.SetActive(true);
+
+        if(currentIndex - 1 < 0)
+            StageManager.instance.BTNLeft.gameObject.SetActive(false);
+        else
+            StageManager.instance.BTNLeft.gameObject.SetActive(true);
     }
 
-    public void GoNextPage(){
+    public void GoNextPage(Button btn){
         if(currentIndex + 1 >= content.pages.Count)
             return;
         
@@ -66,7 +76,7 @@ public class Stage : MonoBehaviour
         ShowOtherInfos();
     }
 
-    public void GoPrePage(){
+    public void GoPrePage(Button btn){
         if(currentIndex - 1 < 0)
             return;
         
@@ -75,14 +85,18 @@ public class Stage : MonoBehaviour
         ShowOtherInfos();
     }
 
-    public void ViewDetail(){
+    public void ViewDetail(Button btn){
         if(content.pages[currentIndex].content != null)
             Background.sprite = content.pages[currentIndex].content;
 
         ShowOtherInfos();
     }
 
-    public void BackToMap(){
+    public void BackToMap(Button btn){
+        DestroyEffect();
+    }
+
+    public void DestroyEffect(){
         if(currentEffect)
             Destroy(currentEffect);
         if(currentRect)
