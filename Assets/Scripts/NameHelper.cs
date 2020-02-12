@@ -16,20 +16,27 @@ public class NameHelper : MonoBehaviour
     int defaultTextSize;
     Color defaultTextColor;
 
+    Outline effect;
+
     void Awake(){
         defaultTextSize = mContent.fontSize;
         defaultTextColor = mContent.color;
+        effect = mContent.GetComponent<Outline>();
     }
 
     public void CancelFocus(){
         mContent.fontSize = defaultTextSize;
         mContent.color = defaultTextColor;
+        mContent.fontStyle = FontStyle.Normal;
+        if(effect) effect.enabled = false;
         linkMap.gameObject.SetActive(false);
     }
 
     public void SetFocus(int size, Color color){
         mContent.fontSize = size;
         mContent.color = color;
+        mContent.fontStyle = FontStyle.Bold;
+        if(effect) effect.enabled = true;
         linkMap.gameObject.SetActive(true);
     }
 
