@@ -9,6 +9,9 @@ int val3 = 0;
 int val4 = 0;
 int lastSendData = 0;
 
+int stayToNext = 0;
+int stayThreshold = 10;
+
 void setup()
 {
   Serial.begin(9600);
@@ -37,39 +40,52 @@ void loop()
   digitalWrite(ledPin, val1);
 */
 
+  if(val1 == 0 && val2 == 0 && val3 == 0 && val4 == 0) {
+      lastSendData = 0;
+      stayToNext = 0;
+  }
+
   if(val1 == 1) {
-     if(lastSendData != 1) {
+     stayToNext++;
+     if(lastSendData != 1 || stayToNext > stayThreshold) {
         //Serial.write(1);
         //Serial.println(1, DEC);
         Serial.println("1");
         lastSendData = 1;
+        stayToNext = 0;
         return;
       }
   }
   if(val2 == 1) {
-      if(lastSendData != 2) {
+      stayToNext++;
+      if(lastSendData != 2 || stayToNext > stayThreshold) {
         //Serial.write(2);
         //Serial.println(2, DEC);
         Serial.println("2");
         lastSendData = 2;
+        stayToNext = 0;
         return;
       }
   }
   if(val3 == 1) {
-      if(lastSendData != 3) {
+      stayToNext++;
+      if(lastSendData != 3 || stayToNext > stayThreshold) {
         //Serial.write(3);
         //Serial.println(3, DEC);
         Serial.println("3");
         lastSendData = 3;
+        stayToNext = 0;
         return;
       } 
   }
   if(val4 == 1) {
-      if(lastSendData != 4) {
+      stayToNext++;
+      if(lastSendData != 4 || stayToNext > stayThreshold) {
         //Serial.write(4);
         //Serial.println(4, DEC);
         Serial.println("4");
         lastSendData = 4;
+        stayToNext = 0;
         return;
       }
   }

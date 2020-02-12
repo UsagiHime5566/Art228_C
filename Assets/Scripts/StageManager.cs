@@ -40,6 +40,10 @@ public class StageManager : MonoBehaviour
 
     public List<NameHelper> area;
 
+    //Cursor
+    int cursorStayTime = 0;
+    Vector3 lastCursorPos;
+
     void Awake(){
         instance = this;
     }
@@ -56,10 +60,26 @@ public class StageManager : MonoBehaviour
         ShowCurrentMap();
         StartCoroutine(IdleToIntro());
 
+        Cursor.visible = false;
+
         SignalAdapter.OnRecieveRun += RecieveRunSignal;
 
         RunBatCmd.CreateBatFile();
         StartCoroutine(DelayCloseOption());
+    }
+
+    void Update(){
+        if(lastCursorPos != Input.mousePosition){
+            Cursor.visible = true;
+            cursorStayTime = 0;
+        } else {
+            if(cursorStayTime < 30){
+                cursorStayTime++;
+            } else {
+                Cursor.visible = false;
+            }
+        }
+        lastCursorPos = Input.mousePosition;
     }
 
     IEnumerator DelayCloseOption()
