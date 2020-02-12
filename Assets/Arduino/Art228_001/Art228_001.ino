@@ -45,7 +45,7 @@ void loop()
       stayToNext = 0;
   }
 
-  if(val1 == 1) {
+  if(val1 == 1 && val2 == 0 && val3 == 0 && val4 == 0) {
      stayToNext++;
      if(lastSendData != 1 || stayToNext > stayThreshold) {
         //Serial.write(1);
@@ -56,7 +56,7 @@ void loop()
         return;
       }
   }
-  if(val2 == 1) {
+  if(val1 == 0 && val2 == 1 && val3 == 0 && val4 == 0) {
       stayToNext++;
       if(lastSendData != 2 || stayToNext > stayThreshold) {
         //Serial.write(2);
@@ -67,7 +67,7 @@ void loop()
         return;
       }
   }
-  if(val3 == 1) {
+  if(val1 == 0 && val2 == 0 && val3 == 1 && val4 == 0) {
       stayToNext++;
       if(lastSendData != 3 || stayToNext > stayThreshold) {
         //Serial.write(3);
@@ -78,7 +78,7 @@ void loop()
         return;
       } 
   }
-  if(val4 == 1) {
+  if(val1 == 0 && val2 == 0 && val3 == 0 && val4 == 1) {
       stayToNext++;
       if(lastSendData != 4 || stayToNext > stayThreshold) {
         //Serial.write(4);
