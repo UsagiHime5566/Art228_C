@@ -8,6 +8,7 @@ using DG.Tweening;
 public class StageManager : MonoBehaviour
 {
     public static StageManager instance;
+    [Header("Link Object")]
     public Stage stagePage;
     public RectTransform HomePage;
     public RectTransform MapPage;
@@ -15,6 +16,7 @@ public class StageManager : MonoBehaviour
     public Button BTNHome;
     public Button BTNLeft;
     public Button BTNRight;
+    public RectTransform OptionPanel;
 
 
     public Action<Button> OnHome;
@@ -22,13 +24,14 @@ public class StageManager : MonoBehaviour
     public Action<Button> OnRight;
     public Action<Button> OnView;
 
+    [Header("Animation")]
     public float punchAmt = 10;
     public float punchTime = 0.3f;
-    public float idleTime = 30;
+    public float idleTime = 180;
     int statIndex;
 
     ///Map System
-
+    [Header("Map system")]
     public int MapId;
     public const int MaxMapId = 11;
 
@@ -52,6 +55,17 @@ public class StageManager : MonoBehaviour
         MapId = 0;
         ShowCurrentMap();
         StartCoroutine(IdleToIntro());
+
+        SignalAdapter.OnRecieveRun += RecieveRunSignal;
+
+        RunBatCmd.CreateBatFile();
+        StartCoroutine(DelayCloseOption());
+    }
+
+    IEnumerator DelayCloseOption()
+    {
+        yield return new WaitForSeconds(5);
+        OptionPanel.gameObject.SetActive(false);
     }
 
     IEnumerator IdleToIntro(){
@@ -60,6 +74,24 @@ public class StageManager : MonoBehaviour
             yield return new WaitForSeconds(idleTime);
             if(current == statIndex)
                 GoIntroPage();
+        }
+    }
+
+    void RecieveRunSignal(int param){
+        switch (param)
+        {
+            case 1:
+                ButtonView();
+                break;
+            case 2:
+                ButtonRight();
+                break;
+            case 3:
+                ButtonLeft();
+                break;
+            case 4:
+                ButtonHome();
+                break;
         }
     }
     
