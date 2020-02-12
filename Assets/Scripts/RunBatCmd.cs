@@ -17,6 +17,7 @@ public class RunBatCmd
         writer.WriteLine("echo !!!");
         writer.WriteLine("echo Wait for system prepare...");
         writer.WriteLine("ping 127.0.0.1 -n 10 -w 1000");
+        writer.WriteLine("cd /D " + exePath);
         writer.WriteLine("setlocal");
         writer.WriteLine("set regkey=\"HKEY_CURRENT_USER\\Software\\" + Application.companyName + "\\" + Application.productName + "\"");
         writer.WriteLine("reg add %regkey% /v \"Screenmanager Resolution Width_h182942802\" /T REG_DWORD /D 1920 /f");
