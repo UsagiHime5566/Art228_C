@@ -15,13 +15,19 @@ public class InfoRect : MonoBehaviour
 
     void Start(){
         currentIndex = 0;
-        StartCoroutine(DoShiftInfos());
+        if(shiftInfos != null) {
+            if(shiftInfos.Count > 1){
+                StartCoroutine(DoShiftInfos());
+            } else {
+                SetNextInfo(shiftInfos[currentIndex]);
+            }
+        }
     }
 
     IEnumerator DoShiftInfos(){
         while(true){
             if(shiftInfos != null){
-                if(currentIndex < shiftInfos.Count && shiftInfos[currentIndex] != null){
+                if(currentIndex < shiftInfos.Count && shiftInfos[currentIndex] != null && shiftInfos.Count > 1){
                     SetNextInfo(shiftInfos[currentIndex]);
                     currentIndex = (currentIndex + 1) % shiftInfos.Count;
                 }
