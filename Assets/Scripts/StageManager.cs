@@ -17,6 +17,7 @@ public class StageManager : MonoBehaviour
     public Button BTNLeft;
     public Button BTNRight;
     public RectTransform OptionPanel;
+    public InputField IdleTime_Field;
 
 
     public Action<Button> OnHome;
@@ -58,14 +59,22 @@ public class StageManager : MonoBehaviour
         statIndex = 0;
         MapId = 0;
         ShowCurrentMap();
-        StartCoroutine(IdleToIntro());
-
-        Cursor.visible = false;
 
         SignalAdapter.OnRecieveRun += RecieveRunSignal;
 
         RunBatCmd.CreateBatFile();
         StartCoroutine(DelayCloseOption());
+
+        if(IdleTime_Field){
+            IdleTime_Field.text = PlayerPrefs.GetString("IdleTime", "20");
+            IdleTime_Field.onValueChanged.AddListener((str)=>{
+                PlayerPrefs.SetString("IdleTime", str);
+                float.TryParse(IdleTime_Field.text, out idleTime);
+            });
+
+            float.TryParse(IdleTime_Field.text, out idleTime);
+        }
+        StartCoroutine(IdleToIntro());
     }
 
     void Update(){
@@ -192,6 +201,11 @@ public class StageManager : MonoBehaviour
         stagePage.LoadStage(area[MapId].stageContent);
         
         MapPage.gameObject.SetActive(false);
+    }
+
+    void ParseToFloat(string src, ref float val){
+        float itime = 30;
+        if(float.TryParse(src, out itime)) val = itime;
     }
 }
 
