@@ -5786,6 +5786,7 @@ MonoBehaviour:
   delayTime: 1.5
   shadowColor: {r: 0.7075472, g: 0.7075472, b: 0.7075472, a: 1}
   shadowTime: 1
+  blinkTime: 1
 --- !u!114 &1695692279
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7216,7 +7217,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &2097417285
 RectTransform:
   m_ObjectHideFlags: 0
